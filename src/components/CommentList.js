@@ -6,10 +6,10 @@ function CommentList(props){
 	//console.log({ comments });
 	const commentItems = comments ? comments.map((comment) => <li key={comment.id}><Comment comment = {comment}/></li>) : null;
 
-	    return (
-        <ul>
-            {commentItems}
-        </ul>
+	return (
+	    <ul>
+	        {commentItems}
+	    </ul>
     )
 }
 export default CommentList
