@@ -13,23 +13,21 @@ class Article extends Component {
 
         const { article } = this.props
         const { isOpen } = this.state
-        const { isOpenComments } = this.state
+       // const { isOpenComments } = this.state
 
         const { comments } = this.props.article;
 
-      // console.log({ isOpen });
-      // console.log({ isOpenComments });
-
         if (!article) return <h3>No article</h3>
-      //  if (!comments) return <h6>No comments</h6>
-        const commentsBody = isOpenComments ?   <div>
-                                                   <h6 onClick = {this.toggleOpenComments}>Hide comments</h6>
-                                                   <CommentList comments={ comments } />
-                                                </div> 
-                                            :   <h6 onClick = {this.toggleOpenComments}>Show comments</h6>
+        // const commentsBody = isOpenComments ?   <div>
+        //                                            <h6 onClick = {this.toggleOpenComments}>Hide comments</h6>
+        //                                            <CommentList comments={ comments } />
+        //                                         </div>
+        //                                     :   <div>
+        //                                             <h6 onClick = {this.toggleOpenComments}>Show comments</h6>
+        //                                         </div>
 
    
-       const body = isOpen ? <section>{article.text}{commentsBody}</section> : null
+       const body = isOpen ? <section>{article.text}<CommentList comments={ comments } /></section> : null
 
         return (
             <div>
