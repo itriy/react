@@ -2,33 +2,31 @@ import React, { PropTypes } from 'react'
 import Comment from './Comment'
 
 function CommentList(props){
-	let isOpenComments = false;
+	let isOpenComments = true;
+
+	let toggleOpenComments = (ev) => {
+        isOpenComments = !isOpenComments
+        console.log(isOpenComments)
+  
+    }
 
 	const { comments } = props;
-	
-	const commentsBody = isOpenComments ?   <div>
-	                                           <h6 onClick = {toggleOpenComments}>Hide comments</h6>
-	                                          
-	                                        </div>
-	                                    :   <div>
-	                                            <h6 onClick = {toggleOpenComments}>Show comments</h6>
-	                                        </div>
-console.log(commentsBody)
-	const commentItems = comments ? comments.map((comment) => {
-		<li key={comment.id}>{commentsBody}<Comment comment = {comment}/></li>
-	}) : null;
+	const commentItems = comments ? comments.map((comment) => <li key={comment.id}><div><Comment comment = {comment}/></div></li>) : null;
 
+	const commentsBody = isOpenComments ?  <div><h6 onClick = {toggleOpenComments}>Hide comments</h6>
+											{commentItems}</div>
+                                        :   
+                                           <h6 onClick = {toggleOpenComments}>Show comments</h6>
+                                                
+
+	
+// console.log(commentItems)
 	return (
 	    <ul>
-	        {commentItems}
+	    	{commentsBody}
+	        
 	    </ul>
     )
-    let toggleOpenComments = (ev) => {
-        console.log('test')
-        isOpenComments = !isOpenComments
-        // this.setState({
-        //     isOpenComments: !this.state.isOpenComments
-        // })
-    }
+
 }
 export default CommentList

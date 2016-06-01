@@ -5,8 +5,7 @@ import CommentList from './CommentList';
 class Article extends Component {
 
     state = {
-        isOpen: false,
-        isOpenComments: false
+        isOpen: false
     }
 
     render() {
@@ -43,12 +42,12 @@ class Article extends Component {
             isOpen: !this.state.isOpen
         })
     }
-    toggleOpenComments = (ev) => {
-        console.log('test')
-        this.setState({
-            isOpenComments: !this.state.isOpenComments
-        })
-    }
+    // toggleOpenComments = (ev) => {
+    //     console.log('test')
+    //     this.setState({
+    //         isOpenComments: !this.state.isOpenComments
+    //     })
+    // }
 }
 
 
