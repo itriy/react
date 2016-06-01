@@ -11,6 +11,7 @@ class CommentList extends Component {
 		const { isOpenComment } = this.state
 		console.log({ isOpenComment })
 		const { comments } = this.props;
+		//Решение правильное, но такие условия тяжело читаються, разбивайте их
 		const commentItems = comments ? comments.map((comment) => <li key={comment.id}><Comment comment = {comment}/></li>) : null;
 		const commentsBody = (isOpenComment && commentItems) ?   
 												<div>
