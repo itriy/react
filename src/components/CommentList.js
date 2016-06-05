@@ -1,38 +1,35 @@
-import React, { PropTypes, Component } from 'react'
+import React, {PropTypes, Component} from 'react'
 import Comment from './Comment'
+import toggleOpen from '../decorators/toggleOpen'
 
 class CommentList extends Component {
-	
-	state = {
-	    isOpenComment: false
-	}
 
-	render(){
-		const { isOpenComment } = this.state
-		console.log({ isOpenComment })
-		const { comments } = this.props;
-		const commentItems = comments ? comments.map((comment) => <li key={comment.id}><Comment comment = {comment}/></li>) : null;
-		const commentsBody = (isOpenComment && commentItems) ?   
-												<div>
-		                                           <h6 onClick = {this.toggleOpenComments}>Hide comments</h6>
-		                                           {commentItems}
-		                                        </div>
+    render() {
+        return (
+            <ul>
+                {this.getToggler()}
+                {this.getList()}
+            </ul>
+        )
+    }
 
-		                                    : commentItems ? <div><h6 onClick = {this.toggleOpenComments}>Show comments</h6></div>
-		                                     
-		                                    :   <div><h6>No comments</h6></div> 
-			
-			return (
-			    <ul>
-			        {commentsBody}
-			    </ul>
-		    )
-	}
-	toggleOpenComments = (ev) => {
-	    this.setState({
-	        isOpenComment: !this.state.isOpenComment
-	    })
-	}
+    getToggler() {
+        const {isOpen, toggleOpen ,comments} = this.props;
+
+        console.log({comments});
+        const text = (isOpen && comments) ? 'hide comments' : comments ? 'show comments' : 'No comments';
+        return <h6 href="#" onClick={toggleOpen}>{text}</h6>
+    }
+
+    getList() {
+        const {isOpen, comments} = this.props;
+
+        if (!isOpen) return null;
+        const commentItems = comments ? comments.map((comment) => <li key={comment.id}><Comment comment={comment}/>
+        </li>) : null;
+        return <ul>{commentItems}</ul>
+    }
+
 }
 
-export default CommentList
+export default toggleOpen(CommentList)
