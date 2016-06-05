@@ -18,6 +18,7 @@ class Article extends Component {
             </div>
         )
     }
+
     getBody() {
         const { article, isOpen } = this.props
         if (!isOpen) return null
@@ -30,14 +31,5 @@ class Article extends Component {
     }
 }
 
-
-Article.propTypes = {
-    article: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        text: PropTypes.string,
-        id: PropTypes.string.isRequired
-    }),
-    options: PropTypes.object
-}
 
 export default Article

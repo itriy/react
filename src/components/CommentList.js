@@ -1,6 +1,6 @@
 import React, {PropTypes, Component} from 'react'
 import Comment from './Comment'
-import toggleOpen from '../decorators/toggleOpen'
+import toggleCommentOpen from '../decorators/toggleCommentOpen'
 
 class CommentList extends Component {
 
@@ -14,17 +14,17 @@ class CommentList extends Component {
     }
 
     getToggler() {
-        const {isOpen, toggleOpen ,comments} = this.props;
-
-        console.log({comments});
+        const {isOpen, toggleCommentOpen, comments} = this.props;
         const text = (isOpen && comments) ? 'hide comments' : comments ? 'show comments' : 'No comments';
-        return <h6 href="#" onClick={toggleOpen}>{text}</h6>
+        
+        return <h6 onClick={toggleCommentOpen}>{text}</h6>
     }
 
     getList() {
         const {isOpen, comments} = this.props;
 
         if (!isOpen) return null;
+
         const commentItems = comments ? comments.map((comment) => <li key={comment.id}><Comment comment={comment}/>
         </li>) : null;
         return <ul>{commentItems}</ul>
@@ -32,4 +32,4 @@ class CommentList extends Component {
 
 }
 
-export default toggleOpen(CommentList)
+export default toggleCommentOpen(CommentList)

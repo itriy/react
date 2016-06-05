@@ -10,7 +10,7 @@ export default (CustomComponent) => class DecoratedComponent extends Component {
         };
     }
 
-    toggleOpen = (ev) => {
+    toggleCommentOpen = (ev) => {
         if (ev && ev.preventDefault) ev.preventDefault();
         this.setState({
             isOpen: !this.state.isOpen
@@ -18,6 +18,6 @@ export default (CustomComponent) => class DecoratedComponent extends Component {
     }
 
     render() {
-        return <CustomComponent {...this.props} isOpen = {this.state.isOpen} toggleOpen = {this.toggleOpen}/>
+        return <CustomComponent {...this.props} isOpen = {this.state.isOpen} toggleCommentOpen = {this.toggleCommentOpen}/>
     }
 }
