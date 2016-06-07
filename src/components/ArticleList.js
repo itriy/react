@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react'
 import Article from './Article'
 import toggleArticleOpen from '../decorators/toggleArticleOpen'
 
+import DayPicker from './DayPicker'
 
 
 class  ArticleList extends Component {
@@ -18,9 +19,12 @@ class  ArticleList extends Component {
             /></li>);
 
         return (
+        	<div>
             <ul>
                 {articleItems}
             </ul>
+            <DayPicker/>
+            </div>
         )
     }
 
