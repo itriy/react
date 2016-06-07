@@ -7,7 +7,8 @@ import toggleArticleOpen from '../decorators/toggleArticleOpen'
 class  ArticleList extends Component {
 
     render(){
-        const { articles, toggleArticleOpen, openedArticle } = this.props;
+        const { articles, openedArticle,toggleArticleOpen } = this.props;
+        console.log(this.props);
   
         const articleItems = articles.map((article) => <li key={article.id}>
             <Article
