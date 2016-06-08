@@ -3,13 +3,14 @@ import Article from './Article'
 import toggleArticleOpen from '../decorators/toggleArticleOpen'
 
 import DayPicker from './DayPicker'
+import Select from './Select'
+
 
 
 class  ArticleList extends Component {
 
     render(){
         const { articles, openedArticle,toggleArticleOpen } = this.props;
-        console.log(this.props);
   
         const articleItems = articles.map((article) => <li key={article.id}>
             <Article
@@ -23,7 +24,8 @@ class  ArticleList extends Component {
             <ul>
                 {articleItems}
             </ul>
-            <DayPicker/>
+            <Select articles={articles}/>
+            <DayPicker />
             </div>
         )
     }
