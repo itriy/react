@@ -17,6 +17,7 @@ export default class Range extends Component {
   handleDayClick(e, day) {
     const range = DateUtils.addDayToRange(day, this.state);
     this.setState(range);
+    //хорошо, но еще лучше обойтись без state, если вам эти данные нужны сверху - то и передавайте их через пропсы. не будет 2 источников данных
     this.props.getDayRange({
       from:moment(range.from).format('L'),
       to:moment(range.to).format('L')
