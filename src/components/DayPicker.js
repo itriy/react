@@ -17,6 +17,10 @@ export default class Range extends Component {
   handleDayClick(e, day) {
     const range = DateUtils.addDayToRange(day, this.state);
     this.setState(range);
+    this.props.getDayRange({
+      from:moment(range.from).format('L'),
+      to:moment(range.to).format('L')
+    });
   }
   handleResetClick(e) {
     e.preventDefault();
@@ -37,7 +41,7 @@ export default class Range extends Component {
           </p>
         }
         <DayPickerComponent
-          {...this.props}
+
           ref="daypicker"
           numberOfMonths={1}
           selectedDays={day => DateUtils.isDayInRange(day, { from, to })}

@@ -9,9 +9,16 @@ import Select from './Select'
 
 class  ArticleList extends Component {
 
+    state = {
+        range: {from:null,to:null}
+    };
+
     render(){
         const { articles, openedArticle,toggleArticleOpen } = this.props;
-  
+
+        const selectedArticles = articles.filter((article)=>{
+            return article.date > this.state.range.from && article.date < this.state.range.to
+        });
         const articleItems = articles.map((article) => <li key={article.id}>
             <Article
                 article = {article}
@@ -24,10 +31,17 @@ class  ArticleList extends Component {
             <ul>
                 {articleItems}
             </ul>
-            <Select articles={articles}/>
-            <DayPicker />
+            <Select articles={selectedArticles}/>
+            <DayPicker getDayRange = {this.getDayRange.bind(this)} />
             </div>
         )
+    }
+
+    getDayRange(range) {
+        console.log('---', range);
+        this.setState({
+            range: range
+        })
     }
 
 }
